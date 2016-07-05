@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/static/lib/weui.min.css">
+    <link rel="stylesheet" href="/static/css/jquery-weui.css">
+    <title>这位小主的信息</title>
+</head>
+<body ontouchstart>
+<div class="weui_cells_title">小主信息</div>
+<div class="weui_cells weui_cells_form">
+    <!--<div class="weui_cell">-->
+        <!--<a href="javascript:void(0);" class="weui_media_box">-->
+            <!--<div class="weui_media_bd">-->
+                <!--<img class="weui_media_appmsg_thumb" src="{{ user['face'] }}" alt="">-->
+            <!--</div>-->
+        <!--</a>-->
+    <!--</div>-->
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">昵称</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['name'] }}
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">微信号</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            {% if all_like == 1 %}
+                {{ user['wechatId'] }}
+            {% else %}
+                互相喜欢之后，才能查看微信号.
+            {% endif %}
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">生日</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['birthday'] }}({{ user['age'] }}周岁)
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">大学</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['colleage_name'] }}
+        </div>
+    </div>
+</div>
+<div class="weui_cells_title">工作信息</div>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">职业</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['industry'] }}
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">工作地</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['work_province'] }} - {{ user['work_city'] }}
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">家乡</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['province'] }} - {{ user['city'] }}
+        </div>
+    </div>
+</div>
+<div class="weui_cells_title">兴趣爱好</div>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['hobby'] }}
+        </div>
+    </div>
+</div>
+<div class="weui_cells_title">择偶条件</div>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            {{ user['song'] }}
+        </div>
+    </div>
+</div>
+{% if isme == 0 and all_like == 0 %}
+<div class="weui_btn_area">
+    <form action="/like" method="post">
+        <input type="hidden" name="user_id" value="{{ user['open_id'] }}"/>
+        <input type="hidden" name="view_id" value="{{ view_id }}"/>
+        <input type="submit" class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" value="I like it!"/>
+    </form>
+</div>
+{% endif %}
+
+{% if isme == 0 and all_like == 1 %}
+<div class="weui_btn_area">
+    <input type="button" class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" value="互相都Like了喽！"/>
+</div>
+{% endif %}
+
+<!--<script src="/static/lib/jquery-2.1.4.js"></script>-->
+<!--<script src="/static/js/jquery-weui.bak.js"></script>-->
+</body>
+</html>
