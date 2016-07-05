@@ -192,5 +192,4 @@ def check_token():
 
 if __name__ == '__main__':
     # gl.conn = get_conn()
-    app.debug = True
-    app.run()
+    app.run('0.0.0.0', 80, True)
