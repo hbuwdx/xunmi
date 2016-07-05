@@ -6,7 +6,7 @@ import gl
 
 def get_conn():
     if gl.conn is None:
-        gl.conn = MySQLdb.connect(host='localhost', user='root', passwd='Hbuwdx123', db='xunmi', port=3306)
+        gl.conn = MySQLdb.connect(host='localhost', user='root', passwd='Hbuwdx123', db='xunmi', charset='utf8', port=3306)
 
 
 def create_table():
