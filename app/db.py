@@ -48,12 +48,15 @@ def create_table():
 
 
 def execute_sql(conn, sql):
-    conn.execute(sql)
+    cursor = conn.cursor()
+    cursor.execute(sql)
     conn.commit()
+    cursor.close()
 
 
 def query(conn, sql):
-    cursor = conn.execute(sql)
+    cursor = conn.cursor()
+    cursor.execute(sql)
     results = []
     for row in cursor:
         results.append(row)
