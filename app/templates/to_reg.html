@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/static/lib/weui.min.css">
+    <link rel="stylesheet" href="/static/css/jquery-weui.css">
+    <title>注册我的信息</title>
+</head>
+<body ontouchstart>
+<div class="weui_cells_title">小主信息</div>
+<div class="weui_cells weui_cells_form">
+    <form name="reg" action="/reg.html" method="post">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">个人照片</div>
+                        <div class="weui_cell_ft">0/2</div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">
+                            <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                        </ul>
+                        <div class="weui_uploader_input_wrp">
+                            <input class="weui_uploader_input" name="face" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">昵称</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" name="name" type="text" placeholder="请输入昵称"/>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">微信号</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" name="wechatId" type="text" placeholder="请输入微信号"/>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">性别</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input id="sex" class="weui_input" name="sex" type="text" placeholder="请选择性别"/>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">身高</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input id="height" class="weui_input" name="height" pattern="[0-9]*" type="number" placeholder="请输入身高(cm)"/>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">生日</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="text" class="weui_input" name="birthday" id='datetime-picker' placeholder="请选择出生日期"/>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">大学</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="text" name="colleage_place" class="weui_input" id='colleage-picker' placeholder="所在地"/>
+        </div>-
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="text" name="colleage_name" class="weui_input" placeholder="大学名称"/>
+        </div>
+    </div>
+
+    <div class="weui_cells_title">工作信息</div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">职业</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="text" name="industry" class="weui_input" id="industry" value="" placeholder="请输入职业"/>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">工作地</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="text" name="work_place" class="weui_input" id='work-picker' placeholder="请输入工作地"/>
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">家乡</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input type="text" name="home_place" class="weui_input" id='home-picker' placeholder="请输入家乡"/>
+        </div>
+    </div>
+    <div class="weui_cells_title">兴趣爱好</div>
+    <div class="weui_cell">
+        <input type="text" class="weui_input" name="hobby" id="hobby" value="" placeholder="请输入兴趣爱好"/>
+    </div>
+    <div class="weui_cells_title">择偶条件</div>
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            <textarea class="weui_textarea" placeholder="请输入择偶条件" rows="3" name="song"></textarea>
+        </div>
+    </div>
+    <div class="weui_btn_area">
+        <input type="submit" name="submit" class="weui_btn weui_btn_primary" value="提交"/>
+    </div>
+        </form>
+
+</div>
+<script type="text/javascript" src="/static/lib/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="/static/js/jquery-weui.js" charset="utf-8"></script>
+<script type="text/javascript" src="/static/js/city-picker.js" charset="utf-8"></script>
+<script>
+    $("#sex").select({
+        title: "选择性别",
+        items:[{
+            title:"男",value:1
+        },{
+            title:"女",value:0
+        }]
+    });
+    $("#datetime-picker").datetimePicker({
+        time:false
+    });
+    $("#home-picker").cityPicker({
+        title: "请选择家乡"
+    });
+    $("#work-picker").cityPicker({
+        title: "请选择工作地",
+        showDistrict: false
+    });
+    $("#colleage-picker").cityPicker({
+        title: "请选择大学所在地",
+        showDistrict: false
+    });
+    $("#industry").picker({
+        title: "选择职业",
+        cols:[{
+            textAlign: 'center',
+            values:['IT','学生','销售','媒体','白领','金融','医生','公务员','其他']
+        }]
+    });
+    $("#hobby").select({
+        title: "选择兴趣爱好",multi: true,
+        items:['爬山','摄影','游泳','足球','电影','音乐','美食','篮球','健身',
+        '旅游']
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/static/lib/weui.min.css">
+    <link rel="stylesheet" href="/static/css/jquery-weui.css">
+    <title>查看他的信息</title>
+</head>
+<body ontouchstart>
+<table border="1" cellspacing="1" cellpadding="1">
+    <tr>
+        <td>男</td>
+        <td>女</td>
+        <td>男微信</td>
+        <td>女微信</td>
+        <td>男Like</td>
+        <td>女Like</td>
+        <td>分数</td>
+    </tr>
+    {% for r in data %}
+    <tr>
+        <td>{{ r[0] }}</td>
+        <td>{{ r[1] }}</td>
+        <td>{{ r[2] }}</td>
+        <td>{{ r[3] }}</td>
+        <td>{{ r[4] }}</td>
+        <td>{{ r[5] }}</td>
+        <td>{{ r[6] }}</td>
+    </tr>
+    {% else %}
+    <tr><em>no data</em></tr>
+    {% endfor %}
+</table>
+
+<script src="/static/lib/jquery-2.1.4.js"></script>
+<script src="/static/js/jquery-weui.js"></script>
+</body>
+</html>
